@@ -3,10 +3,10 @@ window.PULSE.screens = [
   { kind: "gate", form: "swan", kicker: "Muslim Pro retreat, 10 November", title: "Please complete this survey before Tuesday.",
     intro: "<p>The objective is to understand how the team sees the company today, so that Tuesday's session starts from your views. It takes about three minutes.</p>",
     privacy:
-      "<p><strong>This is private.</strong> fivesights (Saiful and Ibnur) runs this survey, not Bitsmedia, and only the two of us read what you write.</p>" +
+      "<p><strong>This is private.</strong> fivesights runs this survey, not Bitsmedia, and only fivesights reads what you write.</p>" +
       "<ul><li>Leadership and HR get <strong>one combined report</strong> of everyone's views. They never see your answers on their own.</li>" +
       "<li>Department results only appear where five or more people answered.</li>" +
-      "<li>Your name is optional. If you add it, it stays with us and is never shared or reported.</li></ul>" +
+      "<li>Your name is optional. If you add it, it is never shared or reported.</li></ul>" +
       "<p>Any language is fine.</p>",
     cta: "Let's go",
     foot: "The passcode is in the message from HR." },
@@ -49,9 +49,9 @@ window.PULSE.screens = [
     { id: "plain", type: "long", label: "Anything leadership should hear, said plainly?", optional: true,
       hint: "This goes into the report as a combined theme. We only quote a line if it could have come from anyone." },
     { id: "name", type: "text", label: "Your name", optional: true,
-      hint: "Only if you want us to know it's you. It stays with Saiful and Ibnur and never appears in any report." }
+      hint: "It never appears in any report." }
   ] },
 
   { kind: "done", form: "swan", kicker: "Sent", title: "Done. Terima kasih.",
-    outro: "<p>See you on Tuesday at 9.30. Bring your phone: we'll ask a few of these again at the close.</p>" }
+    outro: "<p>Your answers have been received.</p>" }
 ];

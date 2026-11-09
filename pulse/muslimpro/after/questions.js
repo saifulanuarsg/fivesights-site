@@ -1,7 +1,7 @@
 /* Muslim Pro pulse, the close of the session. Same five confidence rows as before, word for word. */
 window.PULSE.screens = [
   { kind: "gate", form: "swan", kicker: "Before you go", title: "Ninety seconds. Same questions, three hours later.",
-    privacy: "<p><strong>Still private.</strong> Only Saiful and Ibnur read these. Leadership gets the combined picture, never your answers.</p>",
+    privacy: "<p><strong>Still private.</strong> Only fivesights reads these. Leadership gets the combined picture, never your answers.</p>",
     cta: "Go", foot: "The passcode is on the screen." },
   { form: "dog", kicker: "1 of 2", title: "After this morning.", items: [
     { id: "lead", type: "chips", label: "Are you on the senior leadership team?", options: ["Yes", "No"] },
