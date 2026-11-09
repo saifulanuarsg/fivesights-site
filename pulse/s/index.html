@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A short, private survey</title>
+<link rel="icon" href="../../brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../pulse.css">
+</head>
+<body>
+<div class="top">
+  <img src="../../brand/fivesights-lockup-horizontal.svg" alt="fivesights" width="98" height="26">
+  <span class="for" id="for"></span>
+</div>
+<div id="pulse"></div>
+<script>
+(function () {
+  var API = "https://fivesights-pulse.vercel.app";
+  var q = new URLSearchParams(location.search);
+  var id = (q.get("id") || "").toLowerCase(), stage = q.get("stage") === "post" ? "post" : "pre";
+  var root = document.getElementById("pulse");
+  function fail(msg) { root.innerHTML = '<main class="card"><h1 class="title" style="margin-top:48px"></h1></main>'; root.querySelector("h1").textContent = msg; }
+  if (!/^[a-z0-9][a-z0-9-]{2,59}$/.test(id)) return fail("This link is not complete. Check the message you received.");
+  fetch(API + "/api/survey?id=" + encodeURIComponent(id) + "&stage=" + stage).then(function (r) { return r.json(); }).then(function (j) {
+    if (!j.ok) return fail(j.error || "This survey is not available.");
+    document.getElementById("for").textContent = j.forLine || "";
+    if (j.draft) document.title = "Preview: " + document.title;
+    window.PULSE = { survey: j.id, stage: j.stage, api: API, screens: j.screens };
+    var s = document.createElement("script"); s.src = "../pulse.js"; document.body.appendChild(s);
+  }).catch(function () { fail("No connection. Try again in a moment."); });
+})();
+</script>
+</body>
+</html>
