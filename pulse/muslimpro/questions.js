@@ -12,10 +12,8 @@ window.PULSE.screens = [
     foot: "The passcode is in the message from HR." },
 
   { form: "cat", kicker: "1 of 5 · The basics", title: "First, where you sit.", items: [
-    { id: "dept", type: "select", label: "Your department",
-      hint: "Small teams are combined with a neighbour in the report, so nobody stands out. Senior leadership answers are shown as their own group.",
-      options: ["Engineering, QA and data platform", "Product, design and analytics", "Finance", "Content",
-        "Business, partnerships and marketing", "People, admin and customer support", "Senior leadership team (presenting on Tuesday)"] },
+    { id: "dept", type: "text", label: "Your department", max: 60, placeholder: "e.g. Engineering",
+      hint: "Small teams are combined with a neighbour in the report, so nobody stands out." },
     { id: "country", type: "chips", label: "Where do you work?", optional: true,
       hint: "Only ever reported as Singapore and outside Singapore, and never next to your department.",
       options: ["Singapore", "Kuala Lumpur", "Jakarta", "Somewhere else"] }
