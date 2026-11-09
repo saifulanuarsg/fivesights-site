@@ -270,6 +270,11 @@
       card.appendChild(form);
     } else if (s.kind === "done") {
       if (s.outro) card.appendChild(h("div", { class: "intro", html: s.outro }));
+      if (s.again) card.appendChild(h("div", { class: "actions" }, [h("button", { type: "button", class: "btn", text: s.again, onclick: function () {
+        try { localStorage.removeItem(KEY + "-sent"); } catch (e) {}
+        Object.keys(A).forEach(function (k) { if (k !== "table") delete A[k]; });
+        show(1, true);
+      } })]));
     } else {
       var list = h("div", { class: "items" });
       (s.items || []).forEach(function (it) { list.appendChild(RENDER[it.type](it)); });
