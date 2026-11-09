@@ -4,7 +4,6 @@ window.PULSE.screens = [
     privacy: "<p><strong>Still anonymous.</strong> Only fivesights reads these. Leadership sees the combined results, never your own answers.</p>",
     cta: "Start", foot: "The passcode is on the screen." },
   { form: "dog", kicker: "1 of 3", title: "After this morning.", items: [
-    { id: "lead", type: "chips", label: "Are you on the senior leadership team?", options: ["Yes", "No"] },
     { id: "conf", type: "scale", label: "Now, how sure are you that you can...", low: "1 not yet", high: "5 absolutely", rows: [
       { id: "heading", label: "Explain where Bitsmedia is heading in the next year" },
       { id: "speak", label: "Say what you really think at work" },
@@ -22,5 +21,5 @@ window.PULSE.screens = [
     { id: "fb_best", type: "text", label: "What worked best?", optional: true, max: 300 },
     { id: "fb_change", type: "text", label: "What one thing would you change?", optional: true, max: 300 }
   ] },
-  { kind: "done", form: "swan", kicker: "Sent", title: "Thank you. Enjoy lunch.", outro: "<p>Your answers and feedback have been received. Everyone will see the combined results in the report.</p>" }
+  { kind: "done", form: "swan", kicker: "Sent", title: "Thank you. Enjoy lunch.", outro: "<p>Your answers and feedback have been received. Leadership gets the combined results by 17 November and will share them with everyone on the date agreed this morning.</p>" }
 ];
