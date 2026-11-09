@@ -21,5 +21,5 @@ window.PULSE.screens = [
     { id: "fb_best", type: "text", label: "What worked best?", optional: true, max: 300 },
     { id: "fb_change", type: "text", label: "What one thing would you change?", optional: true, max: 300 }
   ] },
-  { kind: "done", form: "swan", kicker: "Sent", title: "Thank you. Enjoy lunch.", outro: "<p>Your answers and feedback have been received. Leadership gets the full report by Tuesday 17 November. You'll hear back on the date agreed this morning.</p>" }
+  { kind: "done", form: "swan", kicker: "Sent", title: "Thank you. Enjoy lunch.", outro: "<p>Your answers and feedback have been received.</p>" }
 ];
