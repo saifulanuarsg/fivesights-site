@@ -1,6 +1,6 @@
 /* Bitsmedia pulse, the close of the session. Same five confidence rows as before, word for word, then session feedback. */
 window.PULSE.screens = [
-  { kind: "gate", form: "swan", kicker: "Before you go", title: "Two minutes: five questions from the survey, then your feedback.",
+  { kind: "gate", form: "swan", kicker: "Before you go", title: "About three minutes: five questions from the survey, then your feedback.",
     privacy: "<p><strong>Still anonymous.</strong> Only fivesights reads these. Leadership sees the combined results, never your own answers.</p>",
     cta: "Start", foot: "The passcode is on the screen." },
   { form: "dog", kicker: "1 of 3", title: "After this morning.", items: [
