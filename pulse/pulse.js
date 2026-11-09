@@ -100,6 +100,8 @@
   try { var saved = JSON.parse(localStorage.getItem(KEY) || "null"); if (saved && saved.answers) state = saved; } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   var A = state.answers;
+  if (!state.pid) state.pid = (window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)).toLowerCase();
+  var SAVES = P.screens.some(function (s) { return s.save; });
 
   function h(tag, attrs, kids) {
     var el = document.createElement(tag);
@@ -165,6 +167,35 @@
           oninput: function () { A[item.id] = i.value; save(); } });
         i.value = A[item.id] || "";
         return i;
+      });
+    },
+    photo: function (item) {
+      return field(item, function (id) {
+        var box = h("div", { class: "photo" });
+        var prev = h("img", { alt: "", class: "thumb" });
+        var note = h("p", { class: "q-hint" });
+        function show() {
+          var v = A[item.id] || "";
+          if (v.indexOf("data:image") === 0) { prev.src = v; prev.style.display = "block"; note.textContent = "Saves when you tap Next."; }
+          else if (v.indexOf("photo:") === 0) { prev.style.display = "none"; note.textContent = "Photo saved. Take another to replace it."; }
+          else { prev.style.display = "none"; note.textContent = ""; }
+        }
+        var inp = h("input", { id: id, type: "file", accept: "image/*", capture: "environment", onchange: function () {
+          var f = inp.files && inp.files[0]; if (!f) return;
+          note.textContent = "Preparing...";
+          var img = new Image(), url = URL.createObjectURL(f);
+          img.onload = function () {
+            var m = 1280, w = img.width, hh = img.height, k = Math.min(1, m / Math.max(w, hh));
+            var c = document.createElement("canvas"); c.width = Math.round(w * k); c.height = Math.round(hh * k);
+            c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+            A[item.id] = c.toDataURL("image/jpeg", 0.7); URL.revokeObjectURL(url); save(); show();
+          };
+          img.onerror = function () { note.textContent = "That file could not be read. Try a photo."; };
+          img.src = url;
+        } });
+        box.appendChild(h("label", { for: id, class: "btn btn-ghost photo-btn", text: "Take or choose a photo" }));
+        box.appendChild(inp); box.appendChild(prev); box.appendChild(note); show();
+        return box;
       });
     },
     long: function (item) {
@@ -291,10 +322,18 @@
           var first = card.querySelector(".q.needs"); if (first) first.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
           return;
         }
-        if (!last) { show(i + 1, true); return; }
+        if (!last) {
+          if (s.save) {
+            api("/api/submit", { survey: P.survey, stage: P.stage, passcode: state.passcode, answers: A, pid: state.pid, step: i }).then(function (j) {
+              if (j && j.photos) { Object.keys(j.photos).forEach(function (k) { A[k] = j.photos[k]; }); save(); }
+            }).catch(function () {});
+          }
+          show(i + 1, true); return;
+        }
         next.disabled = true; next.textContent = "Sending...";
-        api("/api/submit", { survey: P.survey, stage: P.stage, passcode: state.passcode, answers: A }).then(function (j) {
+        api("/api/submit", { survey: P.survey, stage: P.stage, passcode: state.passcode, answers: A, pid: SAVES ? state.pid : undefined, step: i }).then(function (j) {
           if (j.ok) {
+            if (SAVES) { try { localStorage.setItem(KEY + "-sent", "1"); } catch (e) {} show(i + 1, true); return; }
             try { localStorage.removeItem(KEY); localStorage.setItem(KEY + "-sent", "1"); } catch (e) {}
             show(i + 1, true);
           } else {
