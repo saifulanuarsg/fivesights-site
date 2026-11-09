@@ -1,6 +1,6 @@
 /* Bitsmedia pulse, before the retreat (Tue 10 Nov 2026). */
 window.PULSE.screens = [
-  { kind: "gate", form: "swan", kicker: "Bitsmedia retreat, 10 November", title: "Please complete this survey before Tuesday.",
+  { kind: "gate", form: "swan", kicker: "Bitsmedia retreat, 10 November", title: "Please complete this survey before the session starts.",
     intro: "<p>The objective is to understand how the team sees the company today, so that Tuesday's session starts from your views. It takes about three minutes.</p>",
     privacy:
       "<p><strong>This is private.</strong> fivesights runs this survey, not Bitsmedia, and only fivesights reads what you write.</p>" +
