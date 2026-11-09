@@ -1,7 +1,7 @@
 /* Muslim Pro pulse, before the retreat (Tue 10 Nov 2026). */
 window.PULSE.screens = [
-  { kind: "gate", form: "swan", kicker: "Before Tuesday", title: "Three minutes, before the island.",
-    intro: "<p>A few quick questions so Tuesday starts from what you actually think. Mostly taps.</p>",
+  { kind: "gate", form: "swan", kicker: "Muslim Pro retreat, 10 November", title: "Please complete this survey before Tuesday.",
+    intro: "<p>The objective is to understand how the team sees the company today, so that Tuesday's session starts from your views. It takes about three minutes.</p>",
     privacy:
       "<p><strong>This is private.</strong> fivesights (Saiful and Ibnur) runs this survey, not Bitsmedia, and only the two of us read what you write.</p>" +
       "<ul><li>Leadership and HR get <strong>one combined report</strong> of everyone's views. They never see your answers on their own.</li>" +
