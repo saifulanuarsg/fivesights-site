@@ -1,6 +1,6 @@
-/* Muslim Pro pulse, before the retreat (Tue 10 Nov 2026). */
+/* Bitsmedia pulse, before the retreat (Tue 10 Nov 2026). */
 window.PULSE.screens = [
-  { kind: "gate", form: "swan", kicker: "Muslim Pro retreat, 10 November", title: "Please complete this survey before Tuesday.",
+  { kind: "gate", form: "swan", kicker: "Bitsmedia retreat, 10 November", title: "Please complete this survey before Tuesday.",
     intro: "<p>The objective is to understand how the team sees the company today, so that Tuesday's session starts from your views. It takes about three minutes.</p>",
     privacy:
       "<p><strong>This is private.</strong> fivesights runs this survey, not Bitsmedia, and only fivesights reads what you write.</p>" +
@@ -36,7 +36,7 @@ window.PULSE.screens = [
 
   { form: "dog", kicker: "4 of 5 · You, right now", title: "How sure are you?", items: [
     { id: "conf", type: "scale", label: "How sure are you that you can...", low: "1 not yet", high: "5 absolutely", rows: [
-      { id: "heading", label: "Explain where Muslim Pro is heading in the next year" },
+      { id: "heading", label: "Explain where Bitsmedia is heading in the next year" },
       { id: "speak", label: "Say what you really think at work" },
       { id: "good", label: "See the good in a view you disagree with" },
       { id: "user", label: "Describe a typical day of one of our users" },
