@@ -8,8 +8,19 @@
   var root = document.getElementById("hub");
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function fail(msg) { root.innerHTML = ""; var h = el("h1", "title", msg); root.appendChild(h); }
-  if (!slug) return fail("This link is not complete. Scan the QR code again.");
-  var last = "";
+  var CK = "fs-hub-code-" + (slug || "any");
+  var code = ""; try { code = localStorage.getItem(CK) || ""; } catch (e) {}
+  var last = "", timer = null;
+  function ask(title, err) {
+    last = ""; root.innerHTML = "";
+    root.appendChild(el("p", "kicker", "fivesights session"));
+    root.appendChild(el("h1", "title", title || "Enter your session code"));
+    var f = el("form", "codeform"), i = el("input"); i.type = "text"; i.autocapitalize = "characters"; i.autocomplete = "off"; i.placeholder = "Session code"; i.value = "";
+    var b = el("button", "btn", "Open"); b.type = "submit"; var m = el("p", "err", err || "");
+    f.appendChild(i); f.appendChild(b); f.appendChild(m);
+    f.onsubmit = function (e) { e.preventDefault(); code = i.value.trim(); try { localStorage.setItem(CK, code); } catch (x) {} load(); };
+    root.appendChild(f); setTimeout(function () { i.focus(); }, 50);
+  }
   function draw(j) {
     var sig = JSON.stringify(j); if (sig === last) return; last = sig;
     document.title = j.title + " · fivesights";
@@ -37,10 +48,18 @@
     root.appendChild(el("p", "save", "Keep this page: add it to your home screen or bookmark it. New links appear here as the session goes on."));
   }
   function load() {
-    fetch(API + "/api/hub?s=" + encodeURIComponent(slug), { cache: "no-store" }).then(function (r) { return r.json(); })
-      .then(function (j) { if (!j.ok) return fail(j.error || "This session page is not available."); draw(j); })
+    if (!slug && !code) return ask();
+    var q = (slug ? "s=" + encodeURIComponent(slug) : "") + (code ? (slug ? "&" : "") + "code=" + encodeURIComponent(code) : "");
+    fetch(API + "/api/hub?" + q, { cache: "no-store" }).then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.needCode) return ask(j.title, j.error);
+        if (!j.ok) { if (!slug) { try { localStorage.removeItem(CK); } catch (e) {} return ask("", j.error); } return fail(j.error || "This session page is not available."); }
+        if (!slug && j.slug) { try { history.replaceState(null, "", "/s/" + j.slug); localStorage.setItem("fs-hub-code-" + j.slug, code); } catch (e) {} slug = j.slug; CK = "fs-hub-code-" + slug; }
+        draw(j);
+        if (!timer) timer = setInterval(function () { if (!document.hidden) load(); }, 20000);
+      })
       .catch(function () { if (!last) fail("No connection. Try again in a moment."); });
   }
-  load(); setInterval(function () { if (!document.hidden) load(); }, 20000);
+  load();
   document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
 })();
