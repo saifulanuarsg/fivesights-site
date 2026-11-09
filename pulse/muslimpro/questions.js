@@ -19,8 +19,7 @@ window.PULSE.screens = [
       options: ["Singapore", "Kuala Lumpur", "Jakarta", "Somewhere else"] }
   ] },
 
-  { form: "canary", kicker: "2 of 5 · In your words", title: "Finish the sentence.",
-    intro: "<p>Pay or 31 August on your mind? There's a box for that at the end.</p>", items: [
+  { form: "canary", kicker: "2 of 5 · In your words", title: "Finish the sentence.", items: [
     { id: "best", type: "text", label: "When we're at our best, we...", hint: "How we work, not just what we make." },
     { id: "overdone", type: "text", label: "A good thing we now overdo is...",
       hint: "Something good taken too far, like tidiness turning into fussiness. New here? First impressions count." },
