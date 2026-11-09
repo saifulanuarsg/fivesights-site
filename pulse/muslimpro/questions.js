@@ -1,6 +1,4 @@
-/* Muslim Pro pulse, before the retreat (Tue 10 Nov 2026).
-   Wording tested on 40 synthetic respondents on 9 Nov:
-   _outputs/2026-11-04-muslimpro-session-pack/4-simulations/sim-E-pulse-v3.md */
+/* Muslim Pro pulse, before the retreat (Tue 10 Nov 2026). */
 window.PULSE.screens = [
   { kind: "gate", form: "swan", kicker: "Before Tuesday", title: "Three minutes, before the island.",
     intro: "<p>A few quick questions so Tuesday starts from what you actually think. Mostly taps.</p>",
