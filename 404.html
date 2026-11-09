@@ -14,7 +14,7 @@
 <script>
 // Session hubs live at /s/<session>; everything else is a plain not-found page.
 if (/^\/s\/[a-z0-9-]{3,60}\/?$/i.test(location.pathname)) {
-  var s = document.createElement("script"); s.src = "/s/hub.js"; document.body.appendChild(s);
+  var s = document.createElement("script"); s.src = "/s/hub.js?v=3"; document.body.appendChild(s);
 } else {
   document.getElementById("hub").innerHTML = '<h1 class="title" style="margin-top:40px">This page is not here.</h1><p class="note"><a href="/">Go to fivesights.co</a></p>';
 }
