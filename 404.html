@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>fivesights</title>
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/s/hub.css">
+</head>
+<body>
+<div class="top"><a href="/"><img class="lock" src="/brand/fivesights-lockup-horizontal.svg" alt="fivesights" width="98" height="26"></a><img class="form" src="/brand/fivesights-flight.svg" alt=""></div>
+<main id="hub"></main>
+<script>
+// Session hubs live at /s/<session>; everything else is a plain not-found page.
+if (/^\/s\/[a-z0-9-]{3,60}\/?$/i.test(location.pathname)) {
+  var s = document.createElement("script"); s.src = "/s/hub.js"; document.body.appendChild(s);
+} else {
+  document.getElementById("hub").innerHTML = '<h1 class="title" style="margin-top:40px">This page is not here.</h1><p class="note"><a href="/">Go to fivesights.co</a></p>';
+}
+</script>
+</body>
+</html>
