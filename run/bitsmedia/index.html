@@ -51,6 +51,9 @@ kbd { border: 1px solid var(--slate); border-bottom-width: 2px; border-radius: 4
 <a class="link light" href="https://fivesights-pulse.vercel.app/admin/" target="_blank" rel="noopener"><span>Console<small>Survey results and the polarity engine</small></span></a>
 <a class="link light" href="https://drive.google.com/drive/folders/12MIR8pYBcnei4lvBW5oVFijcoiz0Uc6C" target="_blank" rel="noopener"><span>Drive folder<small>Run card, backup deck, test report</small></span></a>
 
+<h2>Judges</h2>
+<p class="note" style="display:flex;gap:14px;align-items:center"><span id="jqr" style="background:#fff;padding:8px;border-radius:8px;flex:none"></span><span>Leaders scan this at 11.48. They tap their name and Start judging; the code is filled in. Then each pitch's scoring form opens on their phone.<br><a href="https://fivesights-pulse.vercel.app/live/?s=bitsmedia&amp;judge=1&amp;jc=BITSJUDGE" target="_blank" rel="noopener">Open the judges' link</a></span></p>
+
 <h2>Codes</h2>
 <div class="codes">
 <div><b>SENTOSA</b><span>Staff join, and the feedback form</span></div>
@@ -115,5 +118,7 @@ kbd { border: 1px solid var(--slate); border-bottom-width: 2px; border-radius: 4
 <b>No slides link:</b> the table pitches from its prototype.<br>
 <b>Everything down:</b> backup deck on Drive, run on paper.</p>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>try { const q = qrcode(0, "M"); q.addData("https://fivesights-pulse.vercel.app/live/?s=bitsmedia&judge=1&jc=BITSJUDGE"); q.make(); document.getElementById("jqr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0 }); } catch (e) {}</script>
 </body>
 </html>
