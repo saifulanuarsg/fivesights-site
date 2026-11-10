@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bitsmedia run page</title>
+<link rel="icon" href="/brand/favicon.svg">
+<style>
+:root { --ink: #0A0A0A; --graphite: #3A3A3C; --slate: #8E8E93; --mist: #EDEDEE; --line: #D1D1D6; --red: #E5322D; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.5 "Avenir Next", -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 24px 16px 60px; }
+.lock { height: 26px; margin-bottom: 18px; }
+h1 { font-size: 28px; line-height: 1.1; margin: 0 0 4px; }
+.sub { color: var(--graphite); margin: 0 0 22px; }
+h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; margin: 30px 0 10px; display: flex; align-items: center; gap: 8px; }
+h2::before { content: ""; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid var(--red); }
+a.link { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; margin: 0 0 8px; border-radius: 12px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 600; }
+a.link.light { background: var(--mist); color: var(--ink); }
+a.link small { display: block; font-weight: 400; font-size: 13px; opacity: .75; }
+a.link::after { content: "→"; font-size: 18px; }
+.codes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.codes div { border: 1.5px solid var(--line); border-radius: 10px; padding: 10px; }
+.codes b { display: block; font-size: 17px; letter-spacing: .04em; }
+.codes span { font-size: 12px; color: var(--graphite); }
+ol { padding-left: 0; list-style: none; counter-reset: s; margin: 0; }
+ol li { counter-increment: s; position: relative; padding: 0 0 12px 36px; }
+ol li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 13px; font-weight: 700; display: grid; place-items: center; }
+.t { width: 100%; border-collapse: collapse; }
+.t td { padding: 9px 6px; border-bottom: 1px solid var(--mist); vertical-align: top; }
+.t td:first-child { white-space: nowrap; font-weight: 700; width: 56px; }
+.t .part td { background: var(--ink); color: #fff; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+kbd { border: 1px solid var(--slate); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font: 600 13px "Avenir Next", sans-serif; background: #fff; }
+.do { color: var(--red); font-weight: 600; }
+.note { background: var(--mist); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.keys td:first-child { width: 90px; }
+</style>
+</head>
+<body>
+<main>
+<img class="lock" src="/brand/fivesights-lockup-horizontal.svg" alt="fivesights">
+<h1>Bitsmedia retreat · run page</h1>
+<p class="sub">Tuesday 10 November · 9.30 to 12.30 · Amara Sanctuary Sentosa. For Saiful and Ibnur only: never project this page.</p>
+
+<h2>Links</h2>
+<a class="link" href="https://fivesights-pulse.vercel.app/deck/bitsmedia/" target="_blank" rel="noopener"><span>Deck<small>Laptop 1, on the projector</small></span></a>
+<a class="link" href="https://fivesights-pulse.vercel.app/live/mod.html" target="_blank" rel="noopener"><span>Moderation<small>Ibnur's phone: hide notes, start the persona engine, check tables</small></span></a>
+<a class="link light" href="https://fivesights-pulse.vercel.app/live/?s=bitsmedia" target="_blank" rel="noopener"><span>Phones (what staff see)<small>Same as the QR on slide 1</small></span></a>
+<a class="link light" href="https://fivesights.co/pulse/bitsmedia/after/" target="_blank" rel="noopener"><span>Feedback form<small>Opens from the phones at the end</small></span></a>
+<a class="link light" href="https://fivesights-pulse.vercel.app/admin/" target="_blank" rel="noopener"><span>Console<small>Survey results and the polarity engine</small></span></a>
+<a class="link light" href="https://drive.google.com/drive/folders/12MIR8pYBcnei4lvBW5oVFijcoiz0Uc6C" target="_blank" rel="noopener"><span>Drive folder<small>Run card, backup deck, test report</small></span></a>
+
+<h2>Codes</h2>
+<div class="codes">
+<div><b>SENTOSA</b><span>Staff join, and the feedback form</span></div>
+<div><b>BITSJUDGE</b><span>Leaders sign in as judges</span></div>
+<div><b>Admin key</b><span>Deck and moderation. In .env.admin</span></div>
+</div>
+
+<h2>Set-up, 8.15 to 8.55</h2>
+<ol>
+<li><b>Wi-Fi.</b> Laptop 1 on venue Wi-Fi, with your phone hotspot ready as backup.</li>
+<li><b>Deck.</b> Open it with the projector off or on extend. Press <kbd>S</kbd>, type the admin key, check the three polarities, then <b>Save and start</b>. Press <b>Clear rehearsal text</b>. The dot at bottom right turns green.</li>
+<li><b>Moderation.</b> Ibnur opens it on his phone and types the admin key. Tables tab should show 0 joined.</li>
+<li><b>Test.</b> Two phones join (tables 1 and 6). Step through three slides and start a timer: both phones follow. Go back to slide 1.</li>
+<li><b>Tables.</b> Six tables: blank A4 paper, markers, cups and tape. A card with the Wi-Fi name and password.</li>
+<li><b>Ice cream.</b> Fyqa: halal-certified, a few dairy-free. Half the cups out of the freezer at 10.30. Cups go out at 10.48.</li>
+<li><b>Leaders, by 8.40.</b> They don't join a table: they judge the pitches on their phones with BITSJUDGE. At "What leadership heard", each reads one line starting "I heard…", with no explaining. No commitments in the room.</li>
+<li><b>Judges.</b> Fyqa confirms prizes are after 12.30.</li>
+<li><b>8.55.</b> Deck on slide 1, full screen (<kbd>F</kbd>). Presenter notes (<kbd>P</kbd>) only on the laptop screen, never mirrored.</li>
+</ol>
+
+<h2>Flow</h2>
+<table class="t">
+<tr class="part"><td colspan="2">Part one · what you told us</td></tr>
+<tr><td>9.30</td><td>Welcome. Everyone scans the QR and joins with their table and SENTOSA.</td></tr>
+<tr><td>9.31</td><td>Saiful and Ibnur, this morning, by 12.30.</td></tr>
+<tr><td>9.35</td><td>What the survey said. Read directions, not numbers.</td></tr>
+<tr><td>9.40</td><td>Part one divider. Warm-up: everyone stands. <kbd>T</kbd> starts the 3 minutes.</td></tr>
+<tr><td>9.45</td><td>Two sides you need, then the example (optional).</td></tr>
+<tr><td>9.50</td><td>The three polarities. Hands up on the first only.</td></tr>
+<tr><td>9.57</td><td>Map your polarity on phones, 1-2-4-All. <kbd>T</kbd>; the chime calls each change. One person per table sends.</td></tr>
+<tr><td>10.10</td><td>Ibnur checks notes on moderation and hides any with a name. Then the silent dot vote on phones, 5 minutes.</td></tr>
+<tr><td>10.17</td><td>What leadership heard. <span class="do">Check moderation, then <kbd>V</kbd>.</span> Each leader reads one "I heard…" line; Ibnur types it in.</td></tr>
+<tr><td>10.27</td><td>Break, with table points. Timer to end at 10.45.</td></tr>
+<tr class="part"><td colspan="2">Part two · personas and prototypes</td></tr>
+<tr><td>10.45</td><td>Part two divider, how part two works.</td></tr>
+<tr><td>10.48</td><td>Ice cream goes out. Pairs interview while they eat: 4 minutes each way. <kbd>R</kbd><kbd>R</kbd> then <kbd>T</kbd> at the swap. Everyone taps Save interview.</td></tr>
+<tr><td>10.59</td><td class="do">Press <kbd>E</kbd>: the persona engine runs (under a minute, needs 10+ interviews).</td></tr>
+<tr><td>11.00</td><td>Three personas, each with its problem statement. Tables 1–2, 3–4, 5–6 share one; phones show it.</td></tr>
+<tr><td>11.06</td><td>How the pitches are judged (the rubric).</td></tr>
+<tr><td>11.08</td><td>Build, 40 minutes, <kbd>T</kbd>: sketch alone 5, pick one 5, build 20, slides 10. One person per table sends the slides link. Check the count at 11.40.</td></tr>
+<tr><td>11.48</td><td class="do">Pitch order: press <kbd>X</kbd>. Judges sign in with BITSJUDGE.</td></tr>
+<tr><td>11.50</td><td>Six pitches: 3 minutes plus 1 minute of questions. <kbd>O</kbd> opens the table's slides, <kbd>T</kbd> starts the timer, then <kbd>→</kbd> for the next table.</td></tr>
+<tr><td>12.16</td><td>Your feedback (phones open the form), then thank you.</td></tr>
+<tr class="part"><td colspan="2">After 12.30</td></tr>
+<tr><td>Prizes</td><td>Last slide. <kbd>V</kbd> shows the judges' averages. HR gives the prizes.</td></tr>
+</table>
+
+<h2>Deck keys</h2>
+<table class="t keys">
+<tr><td><kbd>→</kbd> <kbd>←</kbd></td><td>Next, back. Every phone follows.</td></tr>
+<tr><td><kbd>T</kbd></td><td>Start or pause the timer (phones show it too).</td></tr>
+<tr><td><kbd>R</kbd><kbd>R</kbd> <kbd>=</kbd></td><td>Reset the timer (press twice). Add a minute.</td></tr>
+<tr><td><kbd>V</kbd></td><td>Show results.</td></tr>
+<tr><td><kbd>E</kbd> <kbd>X</kbd> <kbd>O</kbd></td><td>Persona engine. Draw the pitch order. Open a table's slides.</td></tr>
+<tr><td><kbd>F</kbd> <kbd>P</kbd> <kbd>S</kbd></td><td>Full screen. Presenter notes. Setup.</td></tr>
+</table>
+
+<h2>If something fails</h2>
+<p class="note"><b>Phones stop following:</b> dot at bottom right is red; switch laptop to the hotspot.<br>
+<b>A phone is stuck:</b> pull down to refresh; their work is kept.<br>
+<b>Engine fails:</b> each pair of tables picks one interview from their phones as its persona.<br>
+<b>No slides link:</b> the table pitches from its prototype.<br>
+<b>Everything down:</b> backup deck on Drive, run on paper.</p>
+</main>
+</body>
+</html>
