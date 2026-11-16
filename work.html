@@ -16,6 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://fivesights.co/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
+<script>if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))document.documentElement.classList.add("motion");</script>
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -26,8 +27,8 @@
     <a href="index.html" class="brand" aria-label="fivesights home"><img src="brand/fivesights-lockup-horizontal.svg" alt="fivesights" width="121" height="32"></a>
     <nav class="nav-links" aria-label="Main">
       <a href="index.html#services">Services</a>
-      <a href="work.html" aria-current="page">Work</a>
       <a href="approach.html">Approach</a>
+      <a href="work.html" aria-current="page">Work</a>
       <a href="index.html#people">People</a>
       <a href="index.html#contact" class="btn btn-secondary">Start a conversation</a>
     </nav>
@@ -39,10 +40,10 @@
 <section class="page-hero work-hero">
   <div class="wrap">
     <p class="label">Selected work</p>
-    <h1 class="display">Recent engagements</h1>
+    <h1 class="display" data-words>Recent engagements</h1>
     <p class="hero-sub">Each one started with a question the client was holding. Where the work was confidential we describe the client without naming it. Contactable references are available on request.</p>
-    <figure class="photo">
-      <img src="img/session-futures-wheel.jpg" alt="A fivesights session in progress: participants at tables with worksheets while a futures wheel is shown on screen." width="1440" height="1800">
+    <figure class="photo cut-photo" data-reveal>
+      <div class="frame"><img src="img/session-futures-wheel.jpg" alt="A fivesights session in progress: participants at tables with worksheets while a futures wheel is shown on screen." width="1440" height="1800"></div>
       <figcaption>A futures wheel session with HR and L&amp;D leads, Singapore.</figcaption>
     </figure>
   </div>
@@ -55,7 +56,7 @@
   <div class="wrap">
     <div class="case-list">
 
-      <article class="case">
+      <article class="case" data-reveal>
         <div class="side">
           <p class="label">Sensing and research</p>
           <p class="client">An institute of higher learning (IHL) in Singapore, enterprise education team</p>
@@ -73,7 +74,7 @@
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" data-reveal>
         <div class="side">
           <p class="label">Facilitation</p>
           <p class="client">Catapult &middot; more than 60 C-suite leaders</p>
@@ -91,7 +92,7 @@
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" data-reveal>
         <div class="side">
           <p class="label">Capability building</p>
           <p class="client">Community and interfaith facilitators</p>
@@ -109,7 +110,7 @@
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" data-reveal>
         <div class="side">
           <p class="label">Facilitation</p>
           <p class="client">HR and L&amp;D leads</p>
@@ -179,5 +180,6 @@
 
 <script src="js/fold.js" defer></script>
 <script src="js/site.js" defer></script>
+<script src="js/scroll.js" defer></script>
 </body>
 </html>
