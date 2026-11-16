@@ -1,0 +1,101 @@
+/* Placeholder preview only (16 Nov 2026). Unsplash stock stands in for
+   fivesights session photos and film so the full effect can be judged.
+   Never publish: brand guide 1.4 allows only photos fivesights shot. */
+.ph { position: relative; overflow: hidden; background: var(--ink); }
+.ph img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88); }
+.ph-tag { position: absolute; right: 12px; bottom: 12px; z-index: 3; background: var(--paper); color: var(--ink); font: 600 11px/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 8px; }
+
+/* Film band: full bleed, the image settles from 1.15 to 1 as you scroll */
+.film { position: relative; height: 100svh; }
+.film .ph { position: absolute; inset: 0; }
+.film .ph img { transform: scale(calc(1.15 - var(--t, 0.5) * 0.15)); transform-origin: 60% 50%; }
+.film .panel-x { position: absolute; left: var(--margin); bottom: var(--s6); z-index: 2; background: var(--paper); padding: var(--s4); max-width: 440px; }
+@media (min-width: 1296px) { .film .panel-x { left: calc((100vw - var(--max)) / 2); } }
+.film .panel-x h2 { margin: var(--s2) 0 var(--s3); }
+.btn-line { gap: 14px; }
+.btn-line i { display: inline-block; width: 28px; height: 1px; background: currentColor; }
+
+/* Full-screen player */
+.player { position: fixed; inset: 0; z-index: 100; background: var(--ink); color: var(--paper); display: none; }
+.player.open { display: block; }
+.player .ph { position: absolute; inset: 0; background: var(--ink); }
+.player .ph img { opacity: 0.9; transform: scale(1); transition: transform 90s linear; }
+.player.playing .ph img { transform: scale(1.12); }
+.player .bar { position: absolute; left: 0; right: 0; z-index: 2; display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--margin); }
+.player .top { top: 0; justify-content: space-between; }
+.player .bottom { bottom: 0; }
+.player .chip { background: var(--ink); padding: 10px 14px; font-weight: 600; font-size: 15px; }
+.player button { font: 600 15px/1 var(--sans); color: var(--paper); background: var(--ink); border: 0; padding: 12px 16px; cursor: pointer; }
+.player .track { flex: 1; height: 2px; background: rgba(255,255,255,0.35); position: relative; }
+.player .track b { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--paper); }
+.player.playing .track b { width: 100%; transition: width 90s linear; }
+
+/* Sentence stage over changing photos; the words stay on an ink panel */
+.sbg { position: absolute; inset: 0; }
+.sbg .ph { position: absolute; inset: 0; opacity: 0; transition: opacity 700ms ease-out; }
+.sbg .ph img { transform: scale(calc(1.08 - var(--e, 1) * 0.08)); }
+.sentence-stage:not(:has(li.on)) .sbg .ph:nth-child(1),
+.sentence-stage:has(li[data-step="1"].on:not(.past)) .sbg .ph:nth-child(1),
+.sentence-stage:has(li[data-step="2"].on:not(.past)) .sbg .ph:nth-child(2),
+.sentence-stage:has(li[data-step="3"].on:not(.past)) .sbg .ph:nth-child(3),
+.sentence-stage:has(li[data-step="4"].on) .sbg .ph:nth-child(4) { opacity: 1; }
+.sentence-stage .wrap { position: relative; z-index: 2; }
+.sentence-stage .wrap > * { position: relative; }
+.sentence-stage .inkpanel { background: rgba(10, 10, 10, 0.86); padding: var(--s5); max-width: 980px; }
+
+/* Contact sheet: photos at offset edges, drifting at different speeds */
+.sheet { padding: var(--s7) 0 var(--s8); overflow: hidden; }
+.sheet-grid { position: relative; height: 1100px; max-width: var(--max); margin: var(--s5) auto 0; }
+.sheet-grid .ph { position: absolute; transform: translateY(calc((0.5 - var(--t, 0.5)) * var(--sp, 120px))); }
+.sheet-grid .ph:nth-child(1) { left: 0; top: 0; width: 38%; aspect-ratio: 4/5; --sp: 80px; }
+.sheet-grid .ph:nth-child(2) { left: 44%; top: 120px; width: 30%; aspect-ratio: 1; --sp: 220px; }
+.sheet-grid .ph:nth-child(3) { right: 0; top: 0; width: 20%; aspect-ratio: 3/4; --sp: 320px; }
+.sheet-grid .ph:nth-child(4) { left: 8%; top: 640px; width: 28%; aspect-ratio: 3/2; --sp: 260px; }
+.sheet-grid .ph:nth-child(5) { left: 42%; top: 560px; width: 34%; aspect-ratio: 16/10; --sp: 140px; }
+.sheet-grid .ph:nth-child(6) { right: 2%; top: 520px; width: 18%; aspect-ratio: 4/5; --sp: 360px; }
+@media (max-width: 799px) {
+  .sheet-grid { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); padding: 0 var(--margin); }
+  .sheet-grid .ph { position: relative; inset: auto !important; width: auto !important; top: auto !important; }
+}
+
+/* Full-bleed band with caption panel */
+.band { position: relative; height: 90svh; }
+.band .ph { position: absolute; inset: 0; }
+.band .ph img { transform: scale(calc(1.1 - var(--t, 0.5) * 0.1)); }
+.band .cap { position: absolute; left: var(--margin); bottom: var(--s5); z-index: 2; background: var(--ink); color: var(--paper); padding: var(--s3) var(--s4); max-width: 520px; }
+.band .cap p { color: var(--mist); margin-top: 8px; font-size: 16px; }
+
+/* Approach: chapter photo and hero photo, revealed on the 22.5 degree cut */
+.ch-photo { height: 58svh; margin-bottom: var(--s6); }
+.ch-photo .ph { height: 100%; }
+.motion .ch-photo .ph { clip-path: polygon(0 0, 0 0, -45% 100%, 0 100%); transition: clip-path 1200ms cubic-bezier(0.65, 0, 0.35, 1); }
+.motion .ch-photo.in .ph { clip-path: polygon(0 0, 145% 0, 100% 100%, 0 100%); }
+.hero-photo { height: 70svh; margin-top: var(--s6); }
+.hero-photo .ph { height: 100%; }
+
+/* Work: a photo per case */
+.case .side .ph { margin-top: var(--s3); aspect-ratio: 4/3; }
+@media (max-width: 599px) {
+  .film { height: 88svh; }
+  .film .panel-x { left: var(--margin); right: var(--margin); bottom: var(--s4); padding: var(--s3); }
+  .sentence-stage .inkpanel { padding: var(--s3); }
+  .band { height: 70svh; }
+  .band .cap { right: var(--margin); padding: var(--s3); }
+  .ch-photo { height: 40svh; margin-bottom: var(--s5); }
+  .hero-photo { height: 45svh; }
+  .player .bar { gap: 8px; padding: 12px; }
+  .player .chip { font-size: 13px; }
+}
+@media (max-width: 799px) { .sheet-grid .ph { transform: none; aspect-ratio: 4/5 !important; } .sheet { padding-bottom: var(--s7); } }
+
+/* Thread backgrounds: one photo per screen, settling as you scroll, with
+   an ink scrim so the small words stay readable (brand call pending:
+   the guide says words never sit on photos). */
+.tbg { position: absolute; inset: 0; z-index: 0; }
+.tbg .ph { position: absolute; inset: 0; }
+.tbg .ph img { transform: scale(calc(1.12 - var(--t, 0.5) * 0.12)); }
+.tbg::after { content: ""; position: absolute; inset: 0; background: rgba(10, 10, 10, 0.55); z-index: 1; }
+.tbg .ph-tag { z-index: 2; }
+.close-grid:has(.ph) { grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.9fr) minmax(0, 1fr); }
+.close-img { aspect-ratio: 4 / 5; }
+@media (max-width: 799px) { .close-grid:has(.ph) { grid-template-columns: 1fr; } .close-img { max-width: 260px; } }
