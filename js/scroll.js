@@ -17,6 +17,22 @@
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce || !("IntersectionObserver" in window)) { root.classList.remove("motion"); return; }
 
+  /* Header tucks away while you scroll down and comes back when you
+     scroll up, so phones get the whole screen for the pinned sections. */
+  (function () {
+    var h = document.querySelector("header.nav"), last = window.scrollY, tick = false;
+    if (!h) return;
+    window.addEventListener("scroll", function () {
+      if (tick) return; tick = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (Math.abs(y - last) > 6) { h.classList.toggle("tuck", y > last && y > 160); last = y; }
+        tick = false;
+      });
+    }, { passive: true });
+    h.addEventListener("focusin", function () { h.classList.remove("tuck"); });
+  })();
+
   /* Words */
   document.querySelectorAll("[data-words]").forEach(function (el) {
     var i = 0;
